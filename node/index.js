@@ -23,6 +23,11 @@ function callDataBase(res) {
     
     const mysql1 = require('mysql')
     const connection = mysql1.createConnection(config)
+
+    // Definindo uma lista de nomes para inserção
+    connection.query(`CREATE TABLE IF NOT EXISTS people (name varchar(255))`);
+    connection.query(`ALTER TABLE people AUTO_INCREMENT = 1`);
+
     const sqlInsert = "insert into people(name) values ('Paulo Malandrim')"
     connection.query(sqlInsert)
     connection.end
